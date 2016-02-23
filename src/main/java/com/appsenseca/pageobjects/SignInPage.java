@@ -1,11 +1,9 @@
 package com.appsenseca.pageobjects;
 
+import com.appsenseca.util.WebUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by wojdaa on 2016-02-22.
@@ -13,42 +11,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class SignInPage {
 
     public void fillInUsername(WebDriver driver, String s) {
-        WebElement usernameTextbox = driver.findElement(By.id("Email"));
-        usernameTextbox.clear();
-        usernameTextbox.sendKeys("knedel1981@gmail.com");
+        WebUtil.clearAndSendKeys(driver, By.id("Email"), s);
     }
 
     public SignInPage clickNextButton(WebDriver driver) {
-        WebElement nextButton = driver.findElement(By.id("next"));
-        nextButton.click();
+        WebUtil.click(driver, By.id("next"));
 
-        return PageFactory.initElements(driver, SignInPage.class);
+//        return PageFactory.initElements(driver, SignInPage.class);
+        return null;
     }
 
     public void fillInPassword(WebDriver driver, String s) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Passwd")));
-
-        WebElement passwordTextbox = driver.findElement(By.name("Passwd"));
-        passwordTextbox.clear();
-        passwordTextbox.sendKeys("testuser1234");
+        WebUtil.waitForElementVisible(driver, By.id("Passwd"));
+        WebUtil.clearAndSendKeys(driver, By.id("Passwd"), s);
     }
 
     public EmailHomePage clickSignIn(WebDriver driver) {
-        WebElement loginButton = driver.findElement(By.xpath(".//*[@id='signIn']"));
-        loginButton.click();
-
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Inbox")));
+        WebUtil.click(driver, By.xpath(".//*[@id='signIn']"));
+        WebUtil.waitForElementVisible(driver, By.partialLinkText("Inbox"));
 
         return PageFactory.initElements(driver, EmailHomePage.class);
     }
 
     public boolean isSignButtonExist(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("signIn")));
-
-        return driver.findElements(By.id("signIn")).size() >0;
+        return WebUtil.isElementExist(driver, By.id("signIn"));
     }
 
 }
