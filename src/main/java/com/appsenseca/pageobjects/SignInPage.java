@@ -17,7 +17,6 @@ public class SignInPage {
     public SignInPage clickNextButton(WebDriver driver) {
         WebUtil.click(driver, By.id("next"));
 
-//        return PageFactory.initElements(driver, SignInPage.class);
         return null;
     }
 

@@ -1,3 +1,5 @@
+import com.appsenseca.categories.Critical;
+import com.appsenseca.categories.Major;
 import com.appsenseca.pageobjects.EmailHomePage;
 import com.appsenseca.pageobjects.EmailViewPage;
 import com.appsenseca.pageobjects.SignInPage;
@@ -5,6 +7,7 @@ import com.appsenseca.util.WebUtil;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -15,6 +18,7 @@ public class GmailSignInTest {
 
     WebDriver driver = new FirefoxDriver();
 
+    @Category({Critical.class})
     @Test
     public void gmailLogInShouldBeSuccessfull(){
         // 1. Go to Gmail website
@@ -43,6 +47,7 @@ public class GmailSignInTest {
 
     }
 
+    @Category({Major.class})
     @Test
     public void gmailSendAndReceiveEmailTest() {
         // 1. Click sign in
