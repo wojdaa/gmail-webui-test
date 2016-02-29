@@ -44,7 +44,7 @@ public class EmailHomePage {
     }
 
     public void clickInboxWithNewEmail(WebDriver driver) {
-        WebUtil.waitForElementVisible(driver, By.partialLinkText("Inbox"));
+        WebUtil.waitForElementVisible(driver, By.partialLinkText("Inbox ("));
         WebUtil.click(driver, By.partialLinkText("Inbox"));
     }
 
@@ -53,5 +53,10 @@ public class EmailHomePage {
         WebUtil.click(driver, By.cssSelector("div[class='y6'] span[id] b"));
 
         return PageFactory.initElements(driver, EmailViewPage.class);
+    }
+
+    public static void clickAttachFile(WebDriver driver) {
+        WebUtil.waitForElementVisible(driver, By.cssSelector("div[class='a1 aaA aMZ']"));
+        WebUtil.click(driver, By.cssSelector("div[class='a1 aaA aMZ']"));
     }
 }
