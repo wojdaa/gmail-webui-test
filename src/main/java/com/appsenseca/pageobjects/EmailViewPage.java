@@ -14,6 +14,7 @@ public class EmailViewPage {
     }
 
     public String getEmailBodyText(WebDriver driver) {
+        WebUtil.waitForElementVisible(driver, By.cssSelector("div[class='nH aHU'] div[dir='ltr']"));
         return WebUtil.getElementText(driver, By.cssSelector("div[class='nH aHU'] div[dir='ltr']"));
     }
 

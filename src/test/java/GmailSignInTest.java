@@ -9,16 +9,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by wojdaa on 2016-02-19.
@@ -157,8 +154,8 @@ public class GmailSignInTest {
         emailHomePage.fillInSubject(driver, subject);
 
         // 5. Fill in email body
-        final String body = "Hello Arek! I am sending You something in attachment!";
-        emailHomePage.fillInEmailBody(driver, body);
+        final String bodyAtt = "Hello Arek! I am sending You something in attachment!";
+        emailHomePage.fillInEmailBody(driver, bodyAtt);
 
         // 6. Click Attach file button
         EmailHomePage.clickAttachFile(driver);
@@ -190,8 +187,8 @@ public class GmailSignInTest {
         String actualSubject = emailViewPage.getEmailSubjectText(driver);
         Assert.assertEquals("Email Subject Text should be the same", subject, actualSubject);
 
-        String actualBody = emailViewPage.getEmailBodyText(driver);
-        Assert.assertEquals("Email Body Text should be the same", body, actualBody);
+        String actualBodyAtt = emailViewPage.getEmailBodyText(driver);
+        Assert.assertEquals("Email Body Text should be the same", bodyAtt, actualBodyAtt);
 
         // 13. Verify that email contains attachment
         boolean actualAttachment = emailViewPage.getEmailAttachmentName(driver);

@@ -45,7 +45,7 @@ public class EmailHomePage {
 
     public void clickInboxWithNewEmail(WebDriver driver) {
         WebUtil.waitForElementVisible(driver, By.partialLinkText("Inbox ("));
-        WebUtil.click(driver, By.partialLinkText("Inbox"));
+        WebUtil.click(driver, By.partialLinkText("Inbox ("));
     }
 
     public EmailViewPage clickNewEmail(WebDriver driver) {
