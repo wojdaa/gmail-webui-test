@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Created by wojdaa on 2016-02-22.
  */
 public class WebUtil {
-    final static int WAIT_TIME_OUT = 30;
+    final static int WAIT_TIME_OUT = 60;
 
     public static SignInPage goToSignInPage(WebDriver driver) {
         driver.get("http://gmail.com");

@@ -161,11 +161,11 @@ public class GmailSignInTest {
         // 6. Click Attach file button
         EmailHomePage.clickAttachFile(driver);
 
-        // 7. Set the file name
+        // 7. Copy path to file to be attached to clipboard
         StringSelection ss = new StringSelection("C:\\Users\\wojdaa\\Documents\\Automative Testing\\attachment.zip");
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 
-        // 8. Use CTRL + V and ENTER keys
+        // 8. Use CTRL + V and ENTER keys to paste attachment path to explorer dialog box and submit
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
@@ -179,7 +179,6 @@ public class GmailSignInTest {
         emailHomePage.clickSendButton(driver);
 
         // 10. Click Inbox again
-//        emailHomePage.clickInboxWithNewEmail(driver);
         emailHomePage.clickFolderByName(driver, "Inbox");
 
         // 11. Click email
