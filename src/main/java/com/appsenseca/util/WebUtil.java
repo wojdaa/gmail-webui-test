@@ -1,9 +1,7 @@
 package com.appsenseca.util;
 
 import com.appsenseca.pageobjects.SignInPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Created by wojdaa on 2016-02-22.
  */
 public class WebUtil {
-    final static int WAIT_TIME_OUT=30;
+    final static int WAIT_TIME_OUT = 30;
 
     public static SignInPage goToSignInPage(WebDriver driver) {
         driver.get("http://gmail.com");
@@ -21,6 +19,10 @@ public class WebUtil {
 
     public static void click(WebDriver driver, By by) {
         WebElement element = driver.findElement(by);
+        element.click();
+    }
+
+    public static void click(WebDriver driver, WebElement element) {
         element.click();
     }
 
@@ -40,7 +42,21 @@ public class WebUtil {
     }
 
     public static String getElementText(WebDriver driver, By by) {
+        waitForElementVisible(driver, by);
         WebElement subjectArea = driver.findElement(by);
         return subjectArea.getText();
+    }
+
+    public static String tryDismissAlert(WebDriver driver) {
+        String alertText = "";
+        try {
+            Alert alert = driver.switchTo().alert();
+            alertText = alert.getText();
+            alert.dismiss();
+
+        }   catch (NoAlertPresentException nape) {
+            // nothing to do, because we only want to close it when pop up
+        }
+        return alertText;
     }
 }

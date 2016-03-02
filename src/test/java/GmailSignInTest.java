@@ -105,7 +105,8 @@ public class GmailSignInTest {
         emailHomePage.clickSendButton(driver);
 
         // 7. Click Inbox again
-        emailHomePage.clickInboxWithNewEmail(driver);
+//        emailHomePage.clickInboxWithNewEmail(driver);
+        emailHomePage.clickFolderByName(driver, "Inbox");
 
         // 8. Click email
         EmailViewPage emailViewPage = emailHomePage.clickNewEmail(driver);
@@ -178,10 +179,11 @@ public class GmailSignInTest {
         emailHomePage.clickSendButton(driver);
 
         // 10. Click Inbox again
-        emailHomePage.clickInboxWithNewEmail(driver);
+//        emailHomePage.clickInboxWithNewEmail(driver);
+        emailHomePage.clickFolderByName(driver, "Inbox");
 
         // 11. Click email
-        EmailViewPage emailViewPage = emailHomePage.clickNewEmail(driver);
+        EmailViewPage emailViewPage = emailHomePage.clickNewEmailWithSubject(driver, subject);
 
         // 12. Verify that email subject and email body is correct
         String actualSubject = emailViewPage.getEmailSubjectText(driver);
