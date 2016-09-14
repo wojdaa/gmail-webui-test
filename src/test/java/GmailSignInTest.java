@@ -162,7 +162,7 @@ public class GmailSignInTest {
         EmailHomePage.clickAttachFile(driver);
 
         // 7. Copy path to file to be attached to clipboard
-        StringSelection ss = new StringSelection("C:\\Users\\wojdaa\\Documents\\Automative Testing\\attachment.zip");
+        StringSelection ss = new StringSelection("C:\\Users\\Arek\\Documents\\Arek\\Automaty\\attachment.pdf");
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 
         // 8. Use CTRL + V and ENTER keys to paste attachment path to explorer dialog box and submit

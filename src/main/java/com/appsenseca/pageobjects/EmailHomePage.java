@@ -15,7 +15,7 @@ import java.util.List;
 public class EmailHomePage {
 
     public SignInPage signOut(WebDriver driver) {
-        WebUtil.click(driver, By.cssSelector("span[class='gb_Za gbii']"));
+        WebUtil.click(driver, By.cssSelector("span[class='gb_7a gbii']"));
         WebUtil.click(driver,By.id("gb_71"));
         WebUtil.waitForElementVisible(driver,By.name("signIn"));
 
