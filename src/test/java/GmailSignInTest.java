@@ -199,8 +199,57 @@ public class GmailSignInTest {
         emailHomePage.signOut(driver);
     }
 
+    @Category({Critical.class})
+    @Test
+    public void gmailSaveDraft(){
+        // 1. Go to Gmail website
+        SignInPage signInPage = WebUtil.goToSignInPage(driver);
 
-    @After
-    public void tearDown() { driver.quit();}
+        // 2. Fill in username
+        signInPage.fillInUsername(driver, "knedel1981@gmail.com");
+
+        // 3. Click Next button
+        SignInPage nextPage = signInPage.clickNextButton(driver);
+
+        // 4. Fill in password
+        signInPage.fillInPassword(driver, "testuser1234" );
+
+        // 5. Click Login button
+        EmailHomePage emailHomePage = signInPage.clickSignIn(driver);
+
+        // 6. Verify that user did sign in
+        Assert.assertTrue("Inbox should exist", emailHomePage.isInboxExist(driver));
+
+        // 7. Click Compose
+        EmailHomePage.clickComposeButton(driver);
+
+        // 8. Fill in recipient
+        EmailHomePage.fillInRecipient(driver, "knedel1981@gmail.com");
+
+        // 9. Fill in subject
+        final String subject = "Gmail Send Email Test";
+        emailHomePage.fillInSubject(driver, subject);
+
+        // 10. Fill in email body
+        final String body = "Hello Testers! Good Morning!";
+        emailHomePage.fillInEmailBody(driver, body);
+
+        // 11. Save draft
+        EmailHomePage.clickSaveAndExitButton(driver);
+
+        // 12. Open Drafts
+        EmailHomePage.clickDraftsButton(driver);
+
+        // 13. Verify that draft have been saved
+        Assert.assertTrue("Draft should have been saved", EmailHomePage.isDraftExist(driver));
+
+
+
+
+    }
+
+
+//    @After
+//    public void tearDown() { driver.quit();}
 
 }

@@ -88,4 +88,18 @@ public class EmailHomePage {
 
         return PageFactory.initElements(driver, EmailViewPage.class);
     }
+
+    public static void clickSaveAndExitButton(WebDriver driver) {
+        WebUtil.waitForElementVisible(driver, By.cssSelector("img[alt='Close']"));
+        WebUtil.click(driver, By.cssSelector("img[alt='Close']"));
+    }
+
+    public static void clickDraftsButton(WebDriver driver) {
+        WebUtil.waitForElementVisible(driver, By.cssSelector("a[title^='Drafts']"));
+        WebUtil.click(driver, By.cssSelector("a[title^='Drafts']"));
+    }
+
+    public static boolean isDraftExist(WebDriver driver) {
+        return WebUtil.isElementExist(driver, By.partialLinkText("Gmail Send Email Test"));
+    }
 }
