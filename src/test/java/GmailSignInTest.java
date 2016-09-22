@@ -244,8 +244,6 @@ public class GmailSignInTest {
         Assert.assertTrue("Draft should have been saved", EmailHomePage.isDraftExist(driver));
 
 
-
-
     }
 
 

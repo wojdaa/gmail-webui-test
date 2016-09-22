@@ -103,3 +103,4 @@ public class EmailHomePage {
         return WebUtil.isElementExist(driver, By.partialLinkText("Gmail Send Email Test"));
     }
 }
+
